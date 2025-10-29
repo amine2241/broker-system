@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buffer {
-    private List<Message> messages;
+    private List<Message> queue;
     public void storeMessage (Message message){
-        messages = new ArrayList<Message>();
-        messages.add(message);
+        queue = new ArrayList<Message>();
+        queue.add(message);
     }
 
     public Buffer(List<Message> messages) {
-        this.messages = messages;
+        this.queue = messages;
     }
     public Buffer() {
     }
 
     public void setMessages(List<Message> messages) {
-        this.messages = messages;
+        this.queue = messages;
     }
     public Message returnMessage(){
-        return messages.get(0);
+        return queue.get(0);
     }
 }
