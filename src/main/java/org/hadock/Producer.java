@@ -16,7 +16,7 @@ public class Producer implements Runnable{
 
     @Override
     public void run() {
-        while(true){
+        for(int i = 0; i < 5; i++){
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {

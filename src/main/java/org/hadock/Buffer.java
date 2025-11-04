@@ -18,9 +18,27 @@ public class Buffer {
                 System.out.println(e.getMessage());
             }
         }
+        System.out.println("produced: " + value);
         queue.add(value);
         notify();
+
     }
+
+
+    public synchronized int consume(){
+        while(queue.isEmpty()){
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        int value = queue.remove(0);
+        System.out.println("Consumed: " + value);
+        notify();
+        return value;
+    }
+
 
 
 
