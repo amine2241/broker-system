@@ -35,6 +35,7 @@ public class Buffer {
         }
         int value = queue.remove(0);
         System.out.println("Consumer : " + queue);
+        System.out.println("testing jenkins");
         notify();
         return value;
     }
