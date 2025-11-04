@@ -6,22 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buffer {
-    private List<Message> queue;
-    public void storeMessage (Message message){
-        queue = new ArrayList<Message>();
-        queue.add(message);
+
+    private List<Integer> queue = new ArrayList<>();
+
+
+    public synchronized void produce(int value){
+        while(queue.size() == 5){
+            try{
+                wait();
+            }catch (InterruptedException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        queue.add(value);
+        notify();
     }
 
-    public Buffer(List<Message> messages) {
-        this.queue = messages;
-    }
-    public Buffer() {
-    }
 
-    public void setMessages(List<Message> messages) {
-        this.queue = messages;
-    }
-    public Message returnMessage(){
-        return queue.get(0);
-    }
+
+
+
 }
