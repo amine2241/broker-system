@@ -18,7 +18,7 @@ public class Buffer {
                 System.out.println(e.getMessage());
             }
         }
-        System.out.println("produced: " + value);
+        System.out.println("Producer : " + queue);
         queue.add(value);
         notify();
 
@@ -34,7 +34,7 @@ public class Buffer {
             }
         }
         int value = queue.remove(0);
-        System.out.println("Consumed: " + value);
+        System.out.println("Consumer : " + queue);
         notify();
         return value;
     }
